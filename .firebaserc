@@ -1,0 +1,13 @@
+{
+  "projects": {
+    "default": "san2beerelli"
+  },
+  "hosting": {
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
