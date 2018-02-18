@@ -6,7 +6,7 @@ import MediaQuery from "react-responsive";
 import NavBar from "../NavBar/NavBar";
 
 const StyledHeader = styled.div`
-  background-color: #e3e3e3;
+  background-color: ${props => (props.whitebg ? "#ffffff" : "#e3e3e3")};
   display: flex;
   top: 0;
   border-width: 0 0 1px;
@@ -17,7 +17,8 @@ const StyledHeader = styled.div`
   height: 80px;
   align-items: center;
   justify-content: space-between;
-  box-shadow: -1px 2px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: ${props =>
+    props.shadow ? "-1px 2px 6px rgba(0, 0, 0, 0.175)" : "none"};
   padding: 0 20px;
 `;
 const StyledLogo = styled.img`
@@ -26,9 +27,25 @@ const StyledLogo = styled.img`
 `;
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shadow: false
+    };
+  }
+  componentDidMount() {
+    window.addEventListener("scroll", () => {
+      let shadow = false;
+      if (window.scrollY > 80) {
+        shadow = true;
+      }
+      this.setState({ shadow });
+    });
+  }
   render() {
+    const { shadow } = this.state;
     return (
-      <StyledHeader>
+      <StyledHeader shadow={shadow} whitebg={shadow}>
         <StyledLogo src={logo} />
         <MediaQuery maxWidth={768}>
           <BurgerButton />

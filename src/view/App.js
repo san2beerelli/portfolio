@@ -1,13 +1,22 @@
 import React, { Component } from "react";
-import { Header, Background } from "../components";
-//import bg from "../resources/bg.jpg";
+import { Header, Background, Paper } from "../components";
+import bg from "../resources/bannerbg.jpg";
+import MediaQuery from "react-responsive";
 
 class App extends Component {
   render() {
     return (
       <div>
         <Header>App</Header>
-        {/* <Background src={bg}>Test</Background> */}
+        <MediaQuery minWidth={769}>
+          {matches => {
+            let bgImage = null;
+            if (matches) {
+              bgImage = bg;
+            }
+            return <Background src={bgImage} />;
+          }}
+        </MediaQuery>
       </div>
     );
   }
