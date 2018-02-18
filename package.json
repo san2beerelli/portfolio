@@ -11,9 +11,11 @@
     "type": "git",
     "url": "git+https://github.com/san2beerelli/portfolio.git"
   },
-  "keywords": ["Santhosh", "Beerelli"],
-  "author":
-    "Santhosh Beerelli <san2beerelli@gmail.com> (http://san2beerelli.com/)",
+  "keywords": [
+    "Santhosh",
+    "Beerelli"
+  ],
+  "author": "Santhosh Beerelli <san2beerelli@gmail.com> (http://san2beerelli.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/san2beerelli/portfolio/issues"
@@ -24,6 +26,8 @@
     "babel-preset-react": "6.24.1",
     "parcel-bundler": "1.6.1",
     "react": "16.2.0",
-    "react-dom": "16.2.0"
+    "react-dom": "16.2.0",
+    "react-responsive": "^4.0.4",
+    "styled-components": "^3.1.6"
   }
 }
