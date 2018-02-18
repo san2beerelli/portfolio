@@ -10,8 +10,11 @@ const Background = props => {
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    display: block;
     background-color: #e3e3e3;
+    display : flex;
+    flex-direction: column;
+    justify-content : center;
+    align-items : center;
   `;
   return <StyledBackground>{children}</StyledBackground>;
 };
