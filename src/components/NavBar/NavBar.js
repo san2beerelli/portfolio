@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const NavBarWrapper = styled.div`
   display: flex;
-  display-direction: row;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 `;

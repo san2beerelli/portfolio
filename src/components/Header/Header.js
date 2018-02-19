@@ -32,6 +32,11 @@ class Header extends Component {
     this.state = {
       shadow: false
     };
+    this.onNavButtonClickHandler = this.onNavButtonClickHandler.bind(this)
+  }
+  onNavButtonClickHandler(evt){
+    this.props.onNavButtonClick(evt)
+
   }
   componentDidMount() {
     window.addEventListener("scroll", () => {
@@ -51,7 +56,7 @@ class Header extends Component {
           <BurgerButton />
         </MediaQuery>
         <MediaQuery minWidth={769}>
-          <NavBar onNavButtonClick={evt => console.log(evt)} />
+          <NavBar onNavButtonClick={evt => this.onNavButtonClickHandler(evt)} />
         </MediaQuery>
       </StyledHeader>
     );
