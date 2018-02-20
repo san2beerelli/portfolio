@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import MobileNavButton from "./MobileNavButton";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 
