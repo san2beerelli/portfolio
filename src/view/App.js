@@ -15,10 +15,7 @@ import { If } from "react-extras";
 
 const StyledElement = styled.div`
   height: 1000px;
-  background-color: #ededed;
-  font-size: 45px;
-  border-top: 1px solid #000;
-  padding-top: 55px;
+  padding-top: 85px;
   padding-left: 10px;
 `;
 

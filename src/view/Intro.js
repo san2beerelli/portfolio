@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Background } from "../components";
 import bg from "../resources/bannerbg.jpg";
+import photo from "../resources/photo.jpg";
 import MediaQuery from "react-responsive";
 import Zoom from "react-reveal/Zoom";
 import styled from "styled-components";
@@ -25,8 +26,16 @@ const StyledLine = styled.div`
   width: 180px;
   height: 2px;
   background-color: #898989;
-  margin-top : 10px;
-  border-radius : 4px;
+  margin-top: 10px;
+  border-radius: 4px;
+`;
+
+const StyledAvatar = styled.img`
+  width: 208px;
+  height: 208px;
+  border-radius: 50%;
+  border: solid 1px #898989;
+  margin-bottom : 20px;
 `;
 
 class Intro extends Component {
@@ -34,6 +43,7 @@ class Intro extends Component {
     return (
       <Zoom>
         <StyledIntro>
+          <StyledAvatar src={photo} />
           <StyledName>Santhosh Beerelli</StyledName>
           <StyledTag>Passionate Software Developer</StyledTag>
           <StyledLine />
