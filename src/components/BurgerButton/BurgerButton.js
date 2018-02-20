@@ -23,9 +23,14 @@ class BurgerButton extends Component {
     };
     this.buttonBgClickHandler = this.buttonBgClickHandler.bind(this);
   }
+  componentWillReceiveProps(props) {
+    this.setState({
+      iconType: props.showMenu ? "close" : "menu"
+    });
+  }
   buttonBgClickHandler() {
     const { iconType } = this.state;
-    console.log(iconType);
+    this.props.burgerClick(iconType);
     this.setState(prevState => ({
       iconType: prevState.iconType === "menu" ? "close" : "menu"
     }));

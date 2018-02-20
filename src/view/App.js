@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header } from "../components";
+import { Header, Fab } from "../components";
 import {
   Link,
   DirectLink,
@@ -11,6 +11,7 @@ import {
 } from "react-scroll";
 import styled from "styled-components";
 import Intro from "./Intro";
+import { If } from "react-extras";
 
 const StyledElement = styled.div`
   height: 1000px;
@@ -28,16 +29,22 @@ class App extends Component {
     this.scrollToBottom = this.scrollToBottom.bind(this);
     this.scrollTo = this.scrollTo.bind(this);
     this.onNavButtonClick = this.onNavButtonClick.bind(this);
+    this.onFabClickHandler = this.onFabClickHandler.bind(this);
+    this.windowScroll = this.windowScroll.bind(this);
+    this.state = { showFab: false };
   }
   onNavButtonClick(evt) {
     this.scrollTo(evt);
   }
+  onFabClickHandler() {
+    scroll.scrollToTop();
+  }
   componentDidMount() {
+    window.addEventListener("scroll", this.windowScroll);
     scrollSpy.update();
   }
   componentWillUnmount() {
-    Events.scrollEvent.remove("begin");
-    Events.scrollEvent.remove("end");
+    window.removeEventListener("scroll", this.windowScroll);
   }
   scrollToTop() {
     scroll.scrollToTop();
@@ -58,10 +65,22 @@ class App extends Component {
   handleSetActive(to) {
     console.log(to);
   }
+  windowScroll() {
+    let showFab = false;
+    if (window.scrollY > 200) {
+      showFab = true;
+    }
+    this.setState({ showFab });
+  }
+
   render() {
+    const { showFab } = this.state;
     return (
       <div>
         <Header onNavButtonClick={this.onNavButtonClick}>App</Header>
+        <If condition={showFab}>
+          <Fab fabClick={this.onFabClickHandler} />
+        </If>
         <Intro />
         <Element name="SKILLS">
           <StyledElement>WIP</StyledElement>

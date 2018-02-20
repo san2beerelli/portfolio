@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import BurgerButton from "../BurgerButton/BurgerButton";
+import MobileNavBar from "../NavBar/MobileNavBar";
 import logo from "../../resources/san2.png";
 import MediaQuery from "react-responsive";
 import NavBar from "../NavBar/NavBar";
+import { If } from "react-extras";
 
 const StyledHeader = styled.div`
   background-color: ${props => (props.whitebg ? "#ffffff" : "#e3e3e3")};
@@ -25,40 +27,76 @@ const StyledLogo = styled.img`
   width: 52px;
   height: 52px;
 `;
+const StyledHeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      shadow: false
+      shadow: false,
+      showMobileNav: false
     };
-    this.onNavButtonClickHandler = this.onNavButtonClickHandler.bind(this)
+    this.onNavButtonClickHandler = this.onNavButtonClickHandler.bind(this);
+    this.onMobileNavButtonClickHandler = this.onMobileNavButtonClickHandler.bind(
+      this
+    );
+    this.burgerClickHandler = this.burgerClickHandler.bind(this);
+    this.windowScroll = this.windowScroll.bind(this);
   }
-  onNavButtonClickHandler(evt){
-    this.props.onNavButtonClick(evt)
-
+  onMobileNavButtonClickHandler(evt) {
+    this.setState({ showMobileNav: false });
+  }
+  onNavButtonClickHandler(evt) {
+    this.props.onNavButtonClick(evt);
+  }
+  burgerClickHandler(evt) {
+    let showMobileNav = false;
+    if (evt === "menu") {
+      showMobileNav = true;
+    }
+    this.setState({ showMobileNav });
+  }
+  windowScroll() {
+    let shadow = false;
+    if (window.scrollY > 80) {
+      shadow = true;
+    }
+    this.setState({ shadow });
   }
   componentDidMount() {
-    window.addEventListener("scroll", () => {
-      let shadow = false;
-      if (window.scrollY > 80) {
-        shadow = true;
-      }
-      this.setState({ shadow });
-    });
+    window.addEventListener("scroll", this.windowScroll);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.windowScroll);
   }
   render() {
-    const { shadow } = this.state;
+    const { shadow, showMobileNav } = this.state;
     return (
-      <StyledHeader shadow={shadow} whitebg={shadow}>
-        <StyledLogo src={logo} />
+      <StyledHeaderWrapper>
+        <StyledHeader shadow={shadow} whitebg={shadow}>
+          <StyledLogo src={logo} />
+          <MediaQuery maxWidth={768}>
+            <BurgerButton
+              burgerClick={this.burgerClickHandler}
+              showMenu={showMobileNav}
+            />
+          </MediaQuery>
+          <MediaQuery minWidth={769}>
+            <NavBar
+              onNavButtonClick={evt => this.onNavButtonClickHandler(evt)}
+            />
+          </MediaQuery>
+        </StyledHeader>
         <MediaQuery maxWidth={768}>
-          <BurgerButton />
+          <MobileNavBar
+            show={showMobileNav}
+            navButtonClick={this.onMobileNavButtonClickHandler}
+          />
         </MediaQuery>
-        <MediaQuery minWidth={769}>
-          <NavBar onNavButtonClick={evt => this.onNavButtonClickHandler(evt)} />
-        </MediaQuery>
-      </StyledHeader>
+      </StyledHeaderWrapper>
     );
   }
 }
