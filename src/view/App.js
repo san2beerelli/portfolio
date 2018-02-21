@@ -11,6 +11,7 @@ import {
 } from "react-scroll";
 import styled from "styled-components";
 import Intro from "./Intro";
+import Skills from "./skills/Skills";
 import { If } from "react-extras";
 
 const StyledElement = styled.div`
@@ -80,7 +81,7 @@ class App extends Component {
         </If>
         <Intro />
         <Element name="SKILLS">
-          <StyledElement>WIP</StyledElement>
+          <Skills />
         </Element>
         <Element name="EXPERIENCE">
           <StyledElement>WIP</StyledElement>
