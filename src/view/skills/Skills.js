@@ -2,22 +2,9 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import SkillList from "./SkillList";
 import * as SkillLogo from "./SkillLogos";
-import { LevelStar } from "../../components";
+import { LevelStar, Title, PageWrapper } from "../../components";
 import star from "../../resources/Star.svg";
 
-const StyledSkillWrapper = styled.div`
-  padding: 100px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-const StyledHeader = styled.div`
-  font-family: "Fredericka the Great", cursive;
-  font-size: 30px;
-  color: #000000;
-  margin-bottom: 40px;
-`;
 const StyledText = styled.div`
   font-family: "Marvel", sans-serif;
   font-size: 18px;
@@ -82,8 +69,8 @@ class Skills extends Component {
   }
   render() {
     return (
-      <StyledSkillWrapper>
-        <StyledHeader>Skills</StyledHeader>
+      <PageWrapper>
+        <Title>Skills</Title>
         <SkillGridWrapper>
           <SkillGrid>
             {SkillList.map((skill, indx) => this.skillRenderer(skill, indx))}
@@ -101,7 +88,7 @@ class Skills extends Component {
           <StyledStarImg src={star} />
           <StyledStarImg src={star} /> <StyledStarText>Advanced</StyledStarText>
         </StyledProficiency>
-      </StyledSkillWrapper>
+      </PageWrapper>
     );
   }
 }

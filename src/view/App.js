@@ -12,6 +12,10 @@ import {
 import styled from "styled-components";
 import Intro from "./Intro";
 import Skills from "./skills/Skills";
+import Experience from "./Experience/Experience";
+import OpenSource from "./OpenSource/OpenSource";
+import Education from "./Education/Education";
+import Contact from "./Contact/Contact";
 import { If } from "react-extras";
 
 const StyledElement = styled.div`
@@ -84,13 +88,16 @@ class App extends Component {
           <Skills />
         </Element>
         <Element name="EXPERIENCE">
-          <StyledElement>WIP</StyledElement>
+          <Experience />
+        </Element>
+        <Element name="OPEN SOURCE">
+          <OpenSource />
         </Element>
         <Element name="EDUCATION">
-          <StyledElement>WIP</StyledElement>
+          <Education />
         </Element>
         <Element name="CONTACT">
-          <StyledElement>WIP</StyledElement>
+          <Contact />
         </Element>
       </div>
     );
