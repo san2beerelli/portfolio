@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Title, PageWrapper, Line } from "../../components";
 import ExperienceCard from "./ExperienceCard";
 import ExperienceList from "./ExperienceList";
+import Resume from "./Resume";
 
 const ExperienceWrapper = styled.div`
   display: flex;
@@ -40,6 +41,8 @@ class Experience extends Component {
           <Line />
           <Line down />
         </ExperienceWrapper>
+        <Resume />
+        Resume
       </PageWrapper>
     );
   }

@@ -47,6 +47,7 @@ class Header extends Component {
     this.windowScroll = this.windowScroll.bind(this);
   }
   onMobileNavButtonClickHandler(evt) {
+    this.props.onNavButtonClick(evt.name);
     this.setState({ showMobileNav: false });
   }
   onNavButtonClickHandler(evt) {
