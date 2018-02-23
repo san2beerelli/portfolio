@@ -7,7 +7,7 @@ const StyledCard = styled.div`
   border-radius: 4px;
   border: solid 1px #e3e3e3;
   background: #f5f5f5;
-  width: 400px;
+  width: 300px;
   height: 200px;
   box-shadow: 0 20px 25px -15px rgba(0, 0, 0, 0.3);
 `;
@@ -19,7 +19,7 @@ const ExperienceCardWrapper = styled.div`
   justify-content: center;
   ${props =>
     props.isDesktop
-      ? props.left ? "padding-right: 438px;" : "padding-left: 436px;"
+      ? props.left ? "padding-right: 338px;" : "padding-left: 336px;"
       : ""};
 `;
 
