@@ -4,6 +4,7 @@ import SkillList from "./SkillList";
 import * as SkillLogo from "./SkillLogos";
 import { LevelStar, Title, PageWrapper } from "../../components";
 import star from "../../resources/Star.svg";
+import LightSpeed from "react-reveal/LightSpeed";
 
 const StyledText = styled.div`
   font-family: "Marvel", sans-serif;
@@ -61,9 +62,11 @@ class Skills extends Component {
   skillRenderer(skill, indx) {
     return (
       <SkillWrapper key={skill.name + indx}>
-        <SkillImg src={SkillLogo[skill.icon]} />
-        <StyledText>{skill.name}</StyledText>
-        <LevelStar level={skill.level} />
+        <LightSpeed>
+          <SkillImg src={SkillLogo[skill.icon]} />
+          <StyledText>{skill.name}</StyledText>
+          <LevelStar level={skill.level} />
+        </LightSpeed>
       </SkillWrapper>
     );
   }
