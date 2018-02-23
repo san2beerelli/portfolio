@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const CardWrapper = styled.div`
-  width: 350px;
-  height: 350px;
+  width: 325px;
+  height: 325px;
   border-radius: 6px;
   border: solid 1px #e6e6e6;
   background: #f5f5f5;
