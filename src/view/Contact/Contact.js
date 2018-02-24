@@ -4,6 +4,7 @@ import { Title, PageWrapper } from "../../components";
 import ContactCard from "./ContactCard";
 import ContactButtons from "./ContactButtons";
 import Bounce from "react-reveal/Bounce";
+import ContactForm from "./ContactForm";
 
 const CardWrapper = styled.div`
   height: 200px;
@@ -45,8 +46,6 @@ class Contact extends Component {
   onTextClickHandler(evt) {
     console.log(evt);
   }
-
-  //https://hooks.slack.com/services/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
   render() {
     const { selectedCard } = this.state;
     return (
@@ -74,7 +73,9 @@ class Contact extends Component {
             </ContactCard>
           </Bounce>
           <Bounce left opposite when={selectedCard === "slack"}>
-            <ContactCard type="slack">Slack</ContactCard>
+            <ContactCard type="slack">
+              <ContactForm />
+            </ContactCard>
           </Bounce>
         </CardWrapper>
 
